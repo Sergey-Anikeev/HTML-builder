@@ -6,20 +6,18 @@ const path = require('path');
 
 //read folder content
 
-
-
 fs.readdir(path.join(__dirname, 'secret-folder'), { withFileTypes: true}, (err, files) => {
     for (const file of files) {      
         let fileSize;    
         if (!file.isDirectory()) {           
             fs.stat(path.join(path.join(__dirname, 'secret-folder'), file.name), (err, stats) => {
                 fileSize = stats.size;
-                console.log(fileSize);
+                // console.log(fileSize);
             });
-            console.log(`${file.name.split('.')[0]} - ${path.extname(file.name).slice(1)} - ${fileSize}b`); //${fileSizeArr.at(files.indexOf(file))}
+            console.log(`${file.name.split('.')[0]} - ${path.extname(file.name).slice(1)} - kb`); //${fileSizeArr.at(files.indexOf(file))}
         }   
     }
-    console.log('files into: ', files);
+    // console.log('files into: ', files);
 });
 
 // const files = readdir(path.join(__dirname, 'secret-folder'), { withFileTypes: true});
